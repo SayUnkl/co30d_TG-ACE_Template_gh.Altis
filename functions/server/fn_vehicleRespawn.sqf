@@ -34,10 +34,12 @@ _thisVehicle setVariable ["customCargo", [_weapons, _magazines, _items, _backpac
 
 
 // add the event handle
-_thisVehicle removeAllEventHandlers "Killed"; //this is to avoid add another event handle
-_thisVehicle addEventHandler ["Killed", {
+_thisVehicle removeAllMPEventHandlers "mpKilled"; //this is to avoid add another event handle
+_thisVehicle addMPEventHandler ["mpKilled", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	_unit spawn RTG_RespawnCode;	
+	if !(isServer) exitWith {};
+	_unit removeAllMPEventHandlers "mpkilled";
+	_unit spawn RTG_RespawnCode;
 }];
 
 if (count ((missionConfigFile >> "MissionSQM" >> "Mission" >> "Entities" ) call BIS_fnc_returnChildren select {getText (_x >> "Attributes" >> "name") == (str _thisVehicle)}) == 0) exitWith {
@@ -86,7 +88,7 @@ if ((damage _thisVehicle) == 1) then {
 		_doRespawn = false;
 		_currentTickets = _tgTickets;
 		_currentTickets = _tgTickets - 1; // is this supouse to start from 0 or 1?
-		if (_currentTickets > 0) then { 
+		if (_currentTickets > 0) then {
 			_doRespawn = true;
 			_plural = "";
 			if (_currentTickets > 1) then {_plural = "s"} else {_plural = ""};
@@ -100,21 +102,20 @@ if ((damage _thisVehicle) == 1) then {
 		};
 		if (_doRespawn) then {
 			sleep _timeToRespawn;
-			_object = (str _thisVehicle); 
-			_configWithName = ((missionConfigFile >> "MissionSQM" >> "Mission" >> "Entities" ) call BIS_fnc_returnChildren select {getText (_x >> "Attributes" >> "name") == _object});   
+			_object = (str _thisVehicle);
+			_configWithName = ((missionConfigFile >> "MissionSQM" >> "Mission" >> "Entities" ) call BIS_fnc_returnChildren select {getText (_x >> "Attributes" >> "name") == _object});
 			_ObjectInitString = getText ((_configWithName select 0) >> "Attributes" >> "init");
 			_VehicleModifications = [_thisVehicle,""] call BIS_fnc_exportVehicle;
 			deleteVehicle _thisVehicle;
 			sleep 1;//In case the vehicle is in the same place
-			_newVehicle = _classnameOfThisVehicle createVehicle _safeSpawnLocation;	
+			_newVehicle = _classnameOfThisVehicle createVehicle _safeSpawnLocation;
 			missionNamespace setVariable [_newVehicleString, _newVehicle, true];
 			[_newVehicle, _newVehicleString] remoteExec ["setVehicleVarName",0];
 			sleep 1;
 			_instalVehicleModifications = ("_this = " + (str _newVehicle)+ ";"+_VehicleModifications);
 			_Init = ("this = " + (str _newVehicle)+ ";" + _ObjectInitString);
-			[(str _Init)] remoteexec ["systemchat",0];
 			call compileFinal _instalVehicleModifications;
-			[(compileFinal _Init)] remoteExec ["call",0,true]; 
+			[(compileFinal _Init)] remoteExec ["call",0,true];
 			_newVehicle setDir _directionToPlaceAt;
 			_newVehicle setPosATL _positionToPlaceAt;
 			//replace gear with gear loaded in editor
@@ -122,8 +123,8 @@ if ((damage _thisVehicle) == 1) then {
 			clearMagazineCargoGlobal _newVehicle;
 			clearItemCargoGlobal _newVehicle;
 			clearBackpackCargoGlobal _newVehicle;
-			
-			
+
+
 			if (count (_weapons select 0) > 0) then {
 				{_newVehicle addWeaponCargoGlobal [_weapons select 0 select _forEachIndex, _weapons select 1 select _forEachIndex];} forEach _weapons;
 			};
