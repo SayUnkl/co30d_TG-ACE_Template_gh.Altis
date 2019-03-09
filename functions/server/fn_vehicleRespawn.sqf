@@ -34,7 +34,7 @@ _thisVehicle setVariable ["customCargo", [_weapons, _magazines, _items, _backpac
 
 
 // add the event handle
-_thisVehicle removeAllEventHandlers "Killed"; //this is to avoid add another event handle
+_thisVehicle removeAllMPEventHandlers "Killed"; //this is to avoid add another event handle
 _thisVehicle addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	if !(isServer) exitWith {};
