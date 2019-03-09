@@ -1,0 +1,37 @@
+150119
+******
+- removed fn_boobyTrap.sqf, fn_civilianKilled.sqf, and relevant code from initServer.sqf as missionEventHandler "EntityKilled" stopped working
+- moved code from fn_farpAction to fn_farpProcessing to avoid passing the entire script as a parameter over the network
+- ensured that the mission timer was set back to use sleep in a scheduled environment - previous update was missing this change however
+- eliminated player setVariable ["playerRespawnsLeft", _playerLivesLeft, true] from all scripts (initPlayerLocal.sqf, onPlayerRespawn.sqf, fn_ifAllPlayersDead) now only uses BIS_fnc_respawnTickets and a player object public variable "isDead" to track players lives
+- updated fn_missionTimer.sqf to use BIS_fnc_Loop as per hedgehog's suggestion
+- added code to allow client hosts (local dev testing) to see that the zeus add actions are working (fn_zeusAddAction.sqf lines 78-84)
+
+- Roques updates
+- Update vehicle respawn script to allow for custom garage and object init changes to be reflected in respawned vehicles
+- Update FARP action to be addAction instead of ACE Interaction, changed reliability of rearming to reflect object init changes and runs on server only now
+- added fn_healAllBox.sqf to allow two ways of adding heal all functions. One is an object variable in the editor and the other is class based for LAW medical boxes. This is toggled on or off with a new parameter in the initPlayerLocal.sqf - default is class based = off
+- added example trigger which can be used to open all gates and doors FOR PLAYERS within it's bounds. It can be deleted if not used.
+- added example objects to demonstrate use of all added functions which must be deleted by mission maker
+
+
+
+151118
+******
+Changes by Unkl incorporating input from hedgehog
+
+FIXED
+- updated credits in lines 11 & 35 in briefing.sqf. Also updated and added lines after line 86 to indicate that custom plyon configurations are not supported in the FARP script.
+
+- fn_teleportToSL.sqf is fully replaced with new version by hedgehog
+
+- onPlayerRespawn.sqf - new line 22 added to execute TG_fnc_ifAllPlayersDead on the server when a player is out of respawns 
+
+- functions\server\fn_ifAllPlayersDead.sqf - replace the entire code to remove a while/do loop
+********************************************
+121018
+******
+Change by Unkl
+- FIXED - fn_getLongRadio.sqf lines 15 & 16 had their classnames reversed, and the if/then statement condition in line 12 did not have the variable name in quotations (this resulted in OPFOR & Independents getting the wrong LR radio)
+
+- ADDED - this file to help mission makers adapt existing projects with line by line descriptions of changes

@@ -1,0 +1,138 @@
+class Header
+{
+	gameType = Coop;
+	minPlayers = 4;				//enter the suggested minimum number of players here
+	maxplayers = 30;			//enter the max number of playable slots here
+};
+
+//EDIT YOUR MISSION NAME IN HERE (don't bother with editor)
+//THIS WILL ALWAYS LOAD THE INFO AND DISPLAY IT ALL THE WAY THROUGH THE LOAD PROCESS
+onLoadName = "TG Mission Template";                      //friendly mission name
+onLoadMission = "Mission template for TacticalGamer.com.";  
+onLoadIntro = "Mission template for TacticalGamer.com";
+onLoadMissionTime = 1;
+onLoadIntroTime = 1;
+loadScreen = "pics\TGBanner.paa";
+author = "|TG| You";  //enter your name in here and be famous!
+
+//MISSION SELECTION SCREEN
+overviewPicture = "pics\TGbanner.paa"; //shows on mission selection screen
+overviewText = "Description of mission including tickets, timer and difficulty options for selection screen.";  //explain mission for when players are selecting a new mission
+briefingName = "co30d_TG-ACE_Template_gh";				//player number, difficulty, mission name, version info
+
+
+respawn = "BASE"; //this is almost always "BASE", the only other sometimes used options is "NONE"
+respawnTemplates[] = {"ace_spectator","Counter","Tickets"}; //discuss with admins (CAA)if you want to change these
+respawnDelay = 1;   //recommended value is 1 - longer times may mess with other scripts but are possible
+respawnVehicleDelay = 60; //not really used since we have a custom vehicle respawn script
+disabledAI = 1;  //0 will allow AI to fill player spots - 1 will not allow AI
+aiKills = 0;  //allows AI kills to show in score table
+scriptedPlayer = 1;
+debriefing = 1;  //1 will show the mission debriefing screen - 0 will not
+
+//respawnOnStart settings - there is a sister setting in initPlayerLocal to set with this
+//-1 = Dont respawn on start. Don't run onPlayerRespawn.sqf on start.
+// 0 = Dont respawn on start. Run onPlayerRespawn.sqf on start.
+// 1 = Respawn on start. Run onPlayerRespawn.sqf on start.
+respawnOnStart = -1;
+
+enableDebugConsole = 1; ///MUST ALWAYS BE 1 FOR MISSION SUBMISSIONS 
+//enableDebugConsole = 2; //only during shared testing
+
+#include "CHVD\dialog.hpp"
+
+class CfgFunctions {
+	#include "functions\cfgfunctions.hpp"	
+	#include "CHVD\CfgFunctions.hpp"
+	//add any additional function you have to include below here
+
+};
+
+class CfgDebriefing
+{  
+	class End1
+	{
+		title = "Mission Completed";
+		subtitle = "BLUFOR have saved the day!";
+		description = "BLUFOR forces completed their objectives. Great work!";
+	};
+	class End2
+	{
+		title = "Mission Failed";
+		subtitle = "Better luck next time.";
+		description = "If at first you don't succeed....";
+	};
+	class End3
+	{
+		title = "Mission Time Out";
+		subtitle = "Mission scrubbed due to time.";
+		description = "Players took too long to complete the objectives. Mission is scrubbed.";
+	};
+};
+
+class Params
+{
+	class Daytime
+	{
+		title = "Time";
+		texts[] = {"Dawn","Morning","Afternoon","Evening","Night","Deep Night"};
+		values[] = {5,9,15,18,21,1};
+		default = 15;
+		function = "BIS_fnc_paramDaytime";
+		isGlobal = 1;
+	};
+};
+
+
+//CORPSE AND WRECK MANAGEMENT - is disabled by default
+//********************************************************************
+
+//  corpseManagerMode 
+//  0 = None - None of the units are managed by the manager
+//  1 = All - All units are managed by the manager
+//  2 = None_But_Respawned - Only units that can respawn are managed by the manager
+//  3 = All_But_Respawned - All units are managed by the manager with exception of respawned (opposite to mode 2)/*
+corpseManagerMode = 0; // Default: 0 for SP, 2 for MP
+
+//  corpseLimit
+//  Corpse limit before which ( <= ) corpseRemovalMaxTime applies and after which ( > ) corpseRemovalMinTime applies.
+corpseLimit = 15; // Default: 15
+
+//  corpseRemovalMinTime
+//  Remove all bodies that have been dead longer than corpseRemovalMinTime when corpseLimit is reached.
+corpseRemovalMinTime = 120; // seconds. Default: 10
+
+//  corpseRemovalMaxTime
+//  Maximum time a corpse can remain on the ground if total number of corpses is equal or under corpseLimit    .
+corpseRemovalMaxTime = 1200; // seconds. Default: 3600
+
+//  minPlayerDistance
+//  The minimum distance between corpse or wreck and nearest player before the corpse or wreck is allowed to be removed by the garbage collector.
+minPlayerDistance = 200; // meters. Default: 0
+
+//  wreckManagerMode
+//  0 = None - None of the vehicles are managed by the manager
+//  1 = All - All vehicles are managed by the manager
+//  2 = None_But_Respawned - Only vehicles that can respawn are managed by the manager
+//  3 = All_But_Respawned - All vehicles are managed by the manager with exception of respawned (opposite to mode 2)
+wreckManagerMode = 0;
+
+//  wreckLimit
+//  Vehicle wreck limit before which ( <= ) wreckRemovalMaxTime applies and after which ( > ) wreckRemovalMinTime applies .
+wreckLimit = 1; // seconds. Default: 15
+
+//  wreckRemovalMinTime
+//  Remove all wrecks that have existed longer than wreckRemovalMinTime when wreckLimit is breached.
+wreckRemovalMinTime = 60; // seconds. Default: 10
+
+//  wreckRemovalMaxTime
+//  Maximum time a wreck can remain on the ground if total number of wrecks is equal or under wreckLimit.
+wreckRemovalMaxTime = 1800; // seconds. Default: 36000 (10 hours)
+
+//END OF COPRSE AND WRECK MANAGEMENT
+
+//used by Vehicle Respawn System
+class MissionSQM
+{
+	#include "mission.sqm"
+};
