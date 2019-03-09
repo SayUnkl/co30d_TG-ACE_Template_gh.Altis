@@ -4,22 +4,22 @@ params ["_repairObject","_Caller"];
 //systemChat format ["passed was: %1", _repairObject];
 _repairCenter = getposASL _repairObject;
 
-_VehiclesAround = (vehicles inAreaArray [_repairCenter, 20, 20] select {(_x isKindOf "LandVehicle" or _x isKindOf "Air" or _x isKindOf "Ship") AND speed _x < 1 AND Alive _x}); //speed needs to be < 1 because there is a small bug were the vehicle can move micro slower but its higher than 0
+_VehiclesAround = (vehicles inAreaArray [_repairCenter, 20, 20] select {(_x isKindOf "LandVehicle" or _x isKindOf "Air" or _x isKindOf "Ship") AND speed _x < 1}); //speed needs to be < 1 because there is a small bug were the vehicle can move micro slower but its higher than 0
 
 //add to the aray if there is vehicles to repair, rearm, refuel.
 _VehiclesToCount = _VehiclesAround select {
-	//get the full damage of the vehicle since the command Damage does not seems to count some hit points damge that are not the hull or engine 
+	//get the full damage of the vehicle since the command Damage does not seems to count some hit points damge that are not the hull or engine
 	_FullDamage = 0;
-	{_FullDamage = _x + _FullDamage} forEach (getAllHitPointsDamage _x select 2); 
+	{_FullDamage = _x + _FullDamage} forEach (getAllHitPointsDamage _x select 2);
 	//
-	_IsLoaded = 1; 
-	{  
-		_CurrentAmmo =  (_x select 1);  
-		_CurrentMagazine =  (_x select 0);  
-		_OriginalAmmoAmout = (getNumber(configFile >> "CfgMagazines" >> _CurrentMagazine >> "count")); 
-		if !(_CurrentAmmo == _OriginalAmmoAmout and _IsLoaded == 1) then {_IsLoaded = 0}; 
-	} forEach magazinesAmmo _x; 
-	
+	_IsLoaded = 1;
+	{
+		_CurrentAmmo =  (_x select 1);
+		_CurrentMagazine =  (_x select 0);
+		_OriginalAmmoAmout = (getNumber(configFile >> "CfgMagazines" >> _CurrentMagazine >> "count"));
+		if !(_CurrentAmmo == _OriginalAmmoAmout and _IsLoaded == 1) then {_IsLoaded = 0};
+	} forEach magazinesAmmo _x;
+
 	damage _x > 0 or fuel _x < 1 or _FullDamage > 0 or _IsLoaded == 0
 };
 //
@@ -39,9 +39,11 @@ _repairObject setVariable ["IsInProgress", (name player), true];
 ["Ensuring vehicles have no passengers..."] remoteExec ["systemChat",_Caller];
 
 {
-	_OldCrew = (crew _x); 
+	_OldCrew = (crew _x);
+	private _vehicle = _x;
 	["You have been removed from the vehicle while it is being serviced."] remoteExec ["systemChat", _OldCrew]; //give notification for the crew
-	{moveOut _x} forEach (crew _x);
+	{if (lifeState _x != "DEAD") then {moveOut _x}} forEach (crew _x);
+	{_vehicle deleteVehicleCrew _x} forEach (crew _vehicle);
 	waitUntil {count (crew _x) == 0}; //this is to avoid possible lag
 	sleep .2;
 	[_x, 2] remoteExec ["setOwner",2];
