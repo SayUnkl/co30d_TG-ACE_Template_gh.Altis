@@ -114,7 +114,6 @@ if ((damage _thisVehicle) == 1) then {
 			sleep 1;
 			_instalVehicleModifications = ("_this = " + (str _newVehicle)+ ";"+_VehicleModifications);
 			_Init = ("this = " + (str _newVehicle)+ ";" + _ObjectInitString);
-			//[(str _Init)] remoteexec ["systemchat",0];
 			call compileFinal _instalVehicleModifications;
 			[(compileFinal _Init)] remoteExec ["call",0,true];
 			_newVehicle setDir _directionToPlaceAt;
