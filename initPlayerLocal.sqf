@@ -192,7 +192,7 @@ if (_is_tfr_enabled_locally) then {
 };
 
 //respawnOnStart handling
-if (_playersWillRespawnOnStart) then {
+if (!_playersWillRespawnOnStart) then {
 	playerSpawns = -1;
 	//onPlayerRepawn.sqf is not going to run so we can wait for radios to save loadout
 	[] spawn {
