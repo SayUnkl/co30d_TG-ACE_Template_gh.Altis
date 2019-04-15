@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={23909.488,28.190001,17973.18};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={23903.955,10.495201,18377.223};
+		dir[]={0.72664726,-0.58945876,-0.35295069};
+		up[]={0.53024542,0.80776286,-0.25755459};
+		aside[]={-0.43692282,1.2578821e-006,-0.89952606};
 	};
 };
 binarizationWanted=0;
@@ -30,6 +30,7 @@ addons[]=
 	"ace_vector",
 	"A3_Weapons_F",
 	"rhsusf_c_troops",
+	"ace_nightvision",
 	"ace_compat_rhs_usf3",
 	"ace_medical",
 	"ace_hearing",
@@ -43,9 +44,9 @@ addons[]=
 	"ace_minedetector",
 	"A3_Weapons_F_Explosives",
 	"A3_Weapons_F_Items",
+	"A3_Weapons_F_Orange",
 	"A3_Characters_F_Tank",
 	"rhsusf_sounds",
-	"task_force_radio_items",
 	"A3_Structures_F_Items_Electronics",
 	"A3_Structures_F_Civ_Camping",
 	"A3_Structures_F_Civ_InfoBoards",
@@ -64,7 +65,6 @@ addons[]=
 	"A3_Structures_F_Heli_Items_Luggage",
 	"A3_Structures_F_Tank_Military_RepairDepot",
 	"A3_Armor_F_Beta_APC_Wheeled_01",
-	"A3_Modules_F_Multiplayer",
 	"A3_Air_F_Orange_UAV_06",
 	"A3_Supplies_F_Heli_Slingload",
 	"rhsgref_c_vehicles_ret",
@@ -77,7 +77,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=37;
+		items=38;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -115,220 +115,227 @@ class AddonsMetaData
 		};
 		class Item5
 		{
+			className="ace_nightvision";
+			name="ACE3 - Night Vision";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item6
+		{
 			className="ace_compat_rhs_usf3";
 			name="ACE3 - RHS USF Compatibility";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item6
+		class Item7
 		{
 			className="ace_medical";
 			name="ACE3 - Medical";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item7
+		class Item8
 		{
 			className="ace_hearing";
 			name="ACE3 - Hearing";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item8
+		class Item9
 		{
 			className="ace_trenches";
 			name="ACE3 - Trenches";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item9
+		class Item10
 		{
 			className="ace_flashlights";
 			name="ACE3 - Flashlights";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item10
+		class Item11
 		{
 			className="ace_maptools";
 			name="ACE3 - Map Tools";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item11
+		class Item12
 		{
 			className="ace_grenades";
 			name="ACE3 - Grenades";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item12
+		class Item13
 		{
 			className="ace_explosives";
 			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item13
+		class Item14
 		{
 			className="ace_minedetector";
 			name="ACE3 - Mine Detector";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item14
+		class Item15
+		{
+			className="A3_Weapons_F_Orange";
+			name="Arma 3 Orange - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item16
 		{
 			className="A3_Characters_F_Tank";
 			name="Arma 3 Tank - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item17
 		{
 			className="rhsusf_sounds";
 			name="USF Sounds";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item16
-		{
-			className="task_force_radio_items";
-			name="task_force_radio_items";
-			author="[TF]Nkey";
-			url="https://github.com/michail-nikolaev/task-force-arma-3-radio";
-		};
-		class Item17
+		class Item18
 		{
 			className="A3_Structures_F";
 			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item18
+		class Item19
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item19
+		class Item20
 		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item20
+		class Item21
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item21
+		class Item22
 		{
 			className="ace_cargo";
 			name="ACE3 - Cargo";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item22
+		class Item23
 		{
 			className="rhsusf_c_HEMTT_A4";
 			name="HEMMTT A4 Trucks";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item23
+		class Item24
 		{
 			className="A3_Signs_F";
 			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item25
 		{
 			className="ace_interaction";
 			name="ACE3 - Interaction";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item25
+		class Item26
 		{
 			className="ace_dragging";
 			name="ACE3 - Dragging";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item26
+		class Item27
 		{
 			className="Desert";
 			name="Desert";
 		};
-		class Item27
+		class Item28
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item28
+		class Item29
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item29
+		class Item30
 		{
 			className="A3_Structures_F_Tank";
 			name="Arma 3 Tank - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item30
+		class Item31
 		{
 			className="A3_Armor_F_Beta";
 			name="Arma 3 Beta - Armored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item31
+		class Item32
 		{
 			className="A3_Air_F_Orange";
 			name="Arma 3 Orange - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item32
+		class Item33
 		{
 			className="A3_Supplies_F_Heli";
 			name="Arma 3 Helicopters - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item33
+		class Item34
 		{
 			className="rhsgref_c_vehicles_ret";
 			name="GREF Vehicle Retextures";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item34
+		class Item35
 		{
 			className="A3_Structures_F_Exp";
 			name="Arma 3 Apex - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item35
+		class Item36
 		{
 			className="A3_Structures_F_Ind";
 			name="Arma 3 - Industrial Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item36
+		class Item37
 		{
 			className="CUP_CAStructures_Wall";
 			name="CUP_CAStructures_Wall";
@@ -352,7 +359,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -412,7 +419,7 @@ class CustomAttributes
 		};
 		nAttributes=2;
 	};
-	class Category1
+	class Category2
 	{
 		name="Scenario";
 		class Attribute0
@@ -6825,7 +6832,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=64;
+		items=62;
 		class Item0
 		{
 			dataType="Group";
@@ -6977,7 +6984,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -7061,7 +7068,7 @@ class Mission
 							};
 							class uniform
 							{
-								typeName="U_B_HeliPilotCoveralls";
+								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 								class ItemCargo
 								{
@@ -7416,7 +7423,7 @@ class Mission
 							};
 							class uniform
 							{
-								typeName="U_B_HeliPilotCoveralls";
+								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 								class ItemCargo
 								{
@@ -7884,7 +7891,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -8130,7 +8137,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -8355,7 +8362,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -8583,7 +8590,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -8637,7 +8644,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={23909.99,3.1914389,18358.576};
+						position[]={23898.32,3.1914389,18369.918};
 						angles[]={0,5.686789,0};
 					};
 					side="West";
@@ -8777,10 +8784,15 @@ class Mission
 								};
 								class ItemCargo
 								{
-									items=1;
+									items=2;
 									class Item0
 									{
 										name="ToolKit";
+										count=1;
+									};
+									class Item1
+									{
+										name="MineDetector";
 										count=1;
 									};
 								};
@@ -8791,7 +8803,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -9004,7 +9016,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -9181,10 +9193,9 @@ class Mission
 							map="ItemMap";
 							compass="ItemCompass";
 							watch="ItemWatch";
-							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -9393,7 +9404,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -9586,7 +9597,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -9763,10 +9774,9 @@ class Mission
 							map="ItemMap";
 							compass="ItemCompass";
 							watch="ItemWatch";
-							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -9975,7 +9985,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -10177,7 +10187,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -10379,7 +10389,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -10586,7 +10596,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -10849,7 +10859,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -11077,7 +11087,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -11271,10 +11281,15 @@ class Mission
 								};
 								class ItemCargo
 								{
-									items=1;
+									items=2;
 									class Item0
 									{
 										name="ToolKit";
+										count=1;
+									};
+									class Item1
+									{
+										name="MineDetector";
 										count=1;
 									};
 								};
@@ -11285,7 +11300,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -11498,7 +11513,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -11678,7 +11693,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -11887,7 +11902,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -12080,7 +12095,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -12257,10 +12272,9 @@ class Mission
 							map="ItemMap";
 							compass="ItemCompass";
 							watch="ItemWatch";
-							radio="tf_anprc152";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -12469,7 +12483,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -12671,7 +12685,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -12873,7 +12887,7 @@ class Mission
 							radio="ItemRadio";
 							gps="ItemGPS";
 							goggles="rhsusf_shemagh_od";
-							hmd="rhsusf_ANPVS_14";
+							hmd="ACE_NVG_Wide";
 							headgear="rhsusf_opscore_fg_pelt_nsw";
 						};
 					};
@@ -13542,15 +13556,6 @@ class Mission
 		};
 		class Item20
 		{
-			dataType="Marker";
-			position[]={23892.477,3.1900001,18406.717};
-			name="supplyRepairTruck";
-			type="b_maint";
-			colorName="ColorWEST";
-			id=51;
-		};
-		class Item21
-		{
 			dataType="Object";
 			class PositionInfo
 			{
@@ -13590,7 +13595,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item22
+		class Item21
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13632,7 +13637,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item23
+		class Item22
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13674,7 +13679,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item24
+		class Item23
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13716,7 +13721,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item25
+		class Item24
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13757,7 +13762,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item26
+		class Item25
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13799,7 +13804,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item27
+		class Item26
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13841,7 +13846,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item28
+		class Item27
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13882,7 +13887,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item29
+		class Item28
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13924,7 +13929,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item30
+		class Item29
 		{
 			dataType="Object";
 			class PositionInfo
@@ -13966,7 +13971,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item31
+		class Item30
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14007,7 +14012,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item32
+		class Item31
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14049,7 +14054,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item33
+		class Item32
 		{
 			dataType="Marker";
 			position[]={23930.996,3.1900001,18340.787};
@@ -14059,7 +14064,7 @@ class Mission
 			colorName="ColorKhaki";
 			id=67;
 		};
-		class Item34
+		class Item33
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14097,7 +14102,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item35
+		class Item34
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -14108,7 +14113,7 @@ class Mission
 			description="the object safeVehicleSpawnPoint must be out of the way and flat with no obstacles in order for replacement vehicles to be spawned in without damage";
 			id=69;
 		};
-		class Item36
+		class Item35
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -14219,7 +14224,7 @@ class Mission
 				nAttributes=5;
 			};
 		};
-		class Item37
+		class Item36
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -14330,7 +14335,7 @@ class Mission
 				nAttributes=5;
 			};
 		};
-		class Item38
+		class Item37
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -14441,7 +14446,7 @@ class Mission
 				nAttributes=5;
 			};
 		};
-		class Item39
+		class Item38
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14482,7 +14487,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item40
+		class Item39
 		{
 			dataType="Marker";
 			position[]={24079.211,3.1900001,18281.588};
@@ -14491,7 +14496,7 @@ class Mission
 			type="Empty";
 			id=78;
 		};
-		class Item41
+		class Item40
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14590,7 +14595,7 @@ class Mission
 				nAttributes=4;
 			};
 		};
-		class Item42
+		class Item41
 		{
 			dataType="Marker";
 			position[]={23932.697,3.1900001,18340.75};
@@ -14604,7 +14609,7 @@ class Mission
 			drawBorder=1;
 			id=84;
 		};
-		class Item43
+		class Item42
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14663,7 +14668,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item44
+		class Item43
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14898,211 +14903,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item45
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={23912.945,3.1900001,18326.289};
-			};
-			id=117;
-			type="ModuleRespawnVehicle_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleRespawnVehicle_F_ForcedRespawn";
-					expression="_this setVariable ['ForcedRespawn',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleRespawnVehicle_F_Init";
-					expression="_this setVariable ['Init',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ModuleRespawnVehicle_F_RespawnWhenDisabled";
-					expression="_this setVariable ['RespawnWhenDisabled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ModuleRespawnVehicle_F_DesertedDistance";
-					expression="_this setVariable ['DesertedDistance',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="ModuleRespawnVehicle_F_PositionType";
-					expression="_this setVariable ['PositionType',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="ModuleRespawnVehicle_F_RespawnCount";
-					expression="_this setVariable ['RespawnCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ModuleRespawnVehicle_F_Position";
-					expression="_this setVariable ['Position',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="ModuleRespawnVehicle_F_Wreck";
-					expression="_this setVariable ['Wreck',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="2";
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="ModuleRespawnVehicle_F_Delay";
-					expression="_this setVariable ['Delay',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="ModuleRespawnVehicle_F_ShowNotification";
-					expression="_this setVariable ['ShowNotification',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				nAttributes=10;
-			};
-		};
-		class Item46
+		class Item44
 		{
 			dataType="Object";
 			class PositionInfo
@@ -15142,7 +14943,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item47
+		class Item45
 		{
 			dataType="Object";
 			class PositionInfo
@@ -15182,7 +14983,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item48
+		class Item46
 		{
 			dataType="Object";
 			class PositionInfo
@@ -15222,7 +15023,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item49
+		class Item47
 		{
 			dataType="Object";
 			class PositionInfo
@@ -15262,7 +15063,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item50
+		class Item48
 		{
 			dataType="Object";
 			class PositionInfo
@@ -15302,7 +15103,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item51
+		class Item49
 		{
 			dataType="Object";
 			class PositionInfo
@@ -15343,7 +15144,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item52
+		class Item50
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16041,38 +15842,38 @@ class Mission
 				nAttributes=22;
 			};
 		};
-		class Item53
+		class Item51
 		{
 			dataType="Comment";
 			class PositionInfo
 			{
 				position[]={23917.047,3.1900001,18340.518};
 			};
-			title="Vehicles exemple";
+			title="Vehicles example";
 			description="Those vehicles have some editor changes,  APC_Test has custom script inside it and modifications and  BMP_Test_moded have a diferent texture and removed ATGM from their default cfg";
 			id=205;
 		};
-		class Item54
+		class Item52
 		{
 			dataType="Comment";
 			class PositionInfo
 			{
 				position[]={23875.098,3.1900001,18346.025};
 			};
-			title="Heal all palyers  action exemple";
-			description="The small boxes altomaticly have the heall all players action, if the mission make wants to set a diferent object with the healing actiom copy and paste the code inside of it init";
+			title="Heal all palyers  action example";
+			description="The small boxes altomaticly have the heall all players action, if the mission make wants to set a diferent object with the healing action copy and paste the code inside of its init";
 			id=206;
 		};
-		class Item55
+		class Item53
 		{
 			dataType="Marker";
 			position[]={23991.141,3.1900001,18371.342};
 			name="APC_Test";
-			text="Marker exemple";
+			text="Marker Example";
 			type="b_mech_inf";
 			id=207;
 		};
-		class Item56
+		class Item54
 		{
 			dataType="Trigger";
 			position[]={23885.045,3.1900001,18321.236};
@@ -16093,7 +15894,7 @@ class Mission
 			id=208;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item57
+		class Item55
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16110,7 +15911,7 @@ class Mission
 			id=209;
 			type="Land_BarGate_F";
 		};
-		class Item58
+		class Item56
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16125,7 +15926,7 @@ class Mission
 			id=210;
 			type="Land_City_Gate_F";
 		};
-		class Item59
+		class Item57
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16140,7 +15941,7 @@ class Mission
 			id=211;
 			type="Land_ConcreteWall_01_m_gate_F";
 		};
-		class Item60
+		class Item58
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16156,7 +15957,7 @@ class Mission
 			id=214;
 			type="Land_Cargo20_light_blue_F";
 		};
-		class Item61
+		class Item59
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16171,7 +15972,7 @@ class Mission
 			id=215;
 			type="Land_Wall_Gate_Village";
 		};
-		class Item62
+		class Item60
 		{
 			dataType="Object";
 			class PositionInfo
@@ -16186,7 +15987,7 @@ class Mission
 			id=217;
 			type="Land_Stone_Gate_F";
 		};
-		class Item63
+		class Item61
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -16194,7 +15995,7 @@ class Mission
 				position[]={23884.799,3.1900001,18323.6};
 			};
 			title="Bonus: automated gate opening";
-			description="place the trigger next to a gate and it will open when a player pass next to it";
+			description="place the trigger next to a gate and it will open when a player pass through the trigger";
 			id=218;
 		};
 	};
