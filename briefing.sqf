@@ -10,10 +10,6 @@ Civilian Occupation System by bangabob<br/>
 <br/>
 Teleport to SL by Megagoth1702 with changes by hedgehog<br/>
 <br/>
-TG TFAR Programming and Get Radios by Unkl and hedgehog<br/>
-<br/>
-TG ACE Arsenal by Unkl, Scout and hedgehog<br/>
-<br/>
 Local Class Based Arsenal by hedgehog<br/>
 <br/>
 Vehicle Respawn by Unkl and Roque_THE_GAMER<br/>
