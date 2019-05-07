@@ -50,11 +50,8 @@ The line below marks the end of this comment paragraph.
 //                                                                                                                        **
 _useClassBasedArsenal = false;                                   //BOOLEAN - can be TRUE or FALSE
 //                                                                                                                      //**
-//if _useClassBasedArsenal  is FALSE then _set to be as: objectsForClassBasedArsenal = [];                                            /**
-_objectsForClassBasedArsenal =  [	classBasedBox,
-                                    supplyRepairTruck,
-									thisObjectDoesntExist
-                                ];              //all objects you place in the editor you want class based arsenals on  //**
+//if _useClassBasedArsenal  is FALSE then _set to be as: objectsForClassBasedArsenal = [];                               /**
+_objectsForClassBasedArsenal =  [classBasedBox, supplyRepairTruck]; //all objects you place in the editor you want class based arsenals on
 //
 //Now you must edit the functions\client\fn_ammo.sqf file to create your custom class based arsenal.                      **
 /***************************************************************************************************************************/
@@ -92,9 +89,7 @@ _numberOfPlayerRespawns = 2;
 _enableFarpAction = true;
                                                              //**
 //if _enableFarpAction is FALSE then _farpActionObjects = [];  **
-_farpActionObjects = [                                       //**
-                       repairDepot     //edit this line as needed
-                     ];                                      //**
+_farpActionObjects = [repairDepot];   //edit this line as needed //**
 /****************************************************************/
 
 //ENABLE RESTORING A PLAYERS LOADOUT ON RESPAWN BACK TO WHAT THEY HAD WHEN KILLED *******
@@ -173,9 +168,7 @@ if (_enableViewDistance) then {
 };
 	
 //hedghogs localized class based arsenal
-if !(_useClassBasedArsenal) then {
-	_objectsForClassBasedArsenal = [];
-} else {
+if (_useClassBasedArsenal) then {
 	{
 		[_x] call TG_fnc_ammo;
 	} forEach _objectsForClassBasedArsenal;
