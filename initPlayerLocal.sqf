@@ -48,54 +48,22 @@ The line below marks the end of this comment paragraph.
 // set the line below to true to use it and add the boxes you want the arsenal to the array                               **
 //edit the values for the variables below                                                                                **
 //                                                                                                                        **
-_useClassBasedArsenal = true;                                   //BOOLEAN - can be TRUE or FALSE
+_useClassBasedArsenal = false;                                   //BOOLEAN - can be TRUE or FALSE
 //                                                                                                                      //**
 //if _useClassBasedArsenal  is FALSE then _set to be as: objectsForClassBasedArsenal = [];                                            /**
 _objectsForClassBasedArsenal =  [	classBasedBox,
-                                    supplyRepairTruck
+                                    supplyRepairTruck,
+									thisObjectDoesntExist
                                 ];              //all objects you place in the editor you want class based arsenals on  //**
 //
 //Now you must edit the functions\client\fn_ammo.sqf file to create your custom class based arsenal.                      **
 /***************************************************************************************************************************/
-
-//ACE INTERACTION OPTIONS   ***************************************************************************
-//Reset TFR programming via ace self interaction                                                     **
-//                                                                                                   **
-_enableResetTFR = true;                                     //BOOLEAN - can be TRUE or FALSE
-/******************************************************************************************************/
-
-//SELF ACE ACTION - GET SR *****************************************************************************
-//Add an option to get SR radio from self (radio bug work around where radios disappear in arsenal!)  **
-//                                                                                                    **
-_enableSelfRadioGetOption = true;                           //BOOLEAN - can be TRUE or FALSE
-/*******************************************************************************************************/
 
 //VIEW DISTANCE ENABLED ***************************************************************************
 //Put View Distance Dialog On Ace Self Menu                                                      **
 //                                                                                               **
 _enableViewDistance = true;                                 //BOOLEAN - can be TRUE or FALSE
 /**************************************************************************************************/
-
-//GET RADIO OBJECTS *****************************************************************************
-//Add Get Tfr Short Range & Long Radios To Listed Objects                                      **
-_enableGetSROnObjects = true;                               //BOOLEAN - can be TRUE or FALSE
-_enableGetLROnObjects = true;                               //BOOLEAN - can be TRUE or FALSE
-//                                                                                             **
-//if both _enableGetLROnObjects or _enableGetSROnObjects are false then _objectsForRadios = [];**
-_objectsForRadios =  [	radioBox,
-                       supplyRepairTruck
-                     ]; //objects you place in editor                                        //**
-/************************************************************************************************/
-
-//DEFAULT TFR BACKPACK RADIO ************************************************************
-//Set Task Force Radio default backpack long range radio classname for this mission	   **
-//must be the class name of a TFR backpack radio                                       **
-//Blufor might be "tf_rt1523g_green" or other variations                               **
-//Opfor might be "tf_mr3000_rhs"                                                       **
-//Independents usually use "tf_anprc155_coyote"                                        **
-//                                                                                     **
-tg_backpackRadio = "tf_rt1523g_green";
-/****************************************************************************************/
 						
 //ENABLE TELEPORT TO SL	**********
 //                              **
@@ -170,26 +138,11 @@ _TGbrief = []execVM "TG\TGbriefing.sqf";
 _missionBriefing = []execVM "briefing.sqf";
 player setVariable ["isDead", false, true];
 [player, _numberOfPlayerRespawns] call BIS_fnc_respawnTickets;
-_is_tfr_enabled_locally = isClass(configFile/"CfgPatches"/"task_force_radio");
-_mssg = "";
-if (_is_tfr_enabled_locally) then {
-	_mssg = format ["%1 is running Task Force Radio", profileName];
-} else {
-	_mssg = format ["%1 is NOT running Task Force Radio", profileName];
-};
-_mssg remoteExec ["systemChat", 0, false];
+
 
 //wait until player is boots on ground
 sleep 1;
 
-//TFAR settings
-//_is_tfr_enabled_locally = isClass(configFile/"CfgPatches"/"task_force_radio");
-if (_is_tfr_enabled_locally) then {
-	player setVariable ["tf_globalVolume", 0.8];
-	//reprogramRadios when SR is issued
-	["TGRadioID", "OnRadiosReceived", {[true, false, true] spawn TG_fnc_reprogramRadios;}, player] call TFAR_fnc_addEventHandler;
-	[nil, player] spawn TG_fnc_getShortRadio;//add short range for all
-};
 
 //respawnOnStart handling
 if (!_playersWillRespawnOnStart) then {
@@ -213,75 +166,21 @@ player setVariable ["sideOfThisPlayer", side player, true];
 
 
 //ACE self interaction items
-//Reset TFR
-//create radio sub-menu under equipment
-if (_is_tfr_enabled_locally) then {
-	if (_enableResetTFR || _enableSelfRadioGetOption) then {
-		_tgRadioActions = ["tg_radioMenu", "TG Radios", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
-		[player, 1, ["ACE_SelfActions", "ACE_Equipment"], _tgRadioActions] call ace_interact_menu_fnc_addActionToObject;
-	};
-	//Reset Radio menu items
-	if (_enableResetTFR) then {
-		_actionBoth = ["tg_radioSelfAction", "Reset Radios", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {[true, true, false] spawn TG_fnc_reprogramRadios;}, {true}] call ace_interact_menu_fnc_createAction;
-		[player, 1, ["ACE_SelfActions", "ACE_Equipment", "tg_radioMenu"], _actionBoth] call ace_interact_menu_fnc_addActionToObject;
-		
-		_actionSR = ["tg_radioSelfAction", "Reset SR", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {[true, false, false] spawn TG_fnc_reprogramRadios;}, {true}] call ace_interact_menu_fnc_createAction;
-		[player, 1, ["ACE_SelfActions", "ACE_Equipment", "tg_radioMenu"], _actionSR] call ace_interact_menu_fnc_addActionToObject;
-		
-		_actionLR = ["tg_radioSelfAction", "Reset LR", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {[false, true, false] spawn TG_fnc_reprogramRadios;}, {true}] call ace_interact_menu_fnc_createAction;
-		[player, 1, ["ACE_SelfActions", "ACE_Equipment", "tg_radioMenu"], _actionLR] call ace_interact_menu_fnc_addActionToObject;
-	};
-	//Get TFR self action
-	if (_enableSelfRadioGetOption) then {
-		_action = ["tg_getRadioSelfAction", "Get SR", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {[player, player] spawn TG_fnc_getShortRadio;}, {true}] call ace_interact_menu_fnc_createAction;
-		[player, 1, ["ACE_SelfActions", "ACE_Equipment", "tg_radioMenu"], _action] call ace_interact_menu_fnc_addActionToObject;
-	};
-} else {
-	//give a self action that will give TeamSpeak details to player without TFAR
-	_action = ["tg_getRadioSelfAction", "TG TeamSpeak", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {player  addItem "itemRadio"; player assignItem "itemRadio"; player vehicleChat "Join us on TeamSpeak. ts.tacticalgamer.com:9988"; hint "We are using Task Force Radio on our TeamSpeak. Join us.";}, {true}] call ace_interact_menu_fnc_createAction;
-	[player, 1, ["ACE_SelfActions", "ACE_Equipment", "tg_radioMenu"], _action] call ace_interact_menu_fnc_addActionToObject;
-
-};// if _is_tfr_enabled_locally
-
 //View Distance action
 if (_enableViewDistance) then {
 	_action3 = ["tg_chvd", "View Distance", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\scout_ca.paa", {chvd = [] spawn CHVD_fnc_openDialog;}, {true}] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions"], _action3] call ace_interact_menu_fnc_addActionToObject;
 };
-
-//ACE other interaction items
-if (_is_tfr_enabled_locally) then {
-	{
-		if (_enableGetSROnObjects) then {
-			_action1 = ["tg_radiosSRAction", "Get SR", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {[_target, player] spawn TG_fnc_getShortRadio;}, {true}] call ace_interact_menu_fnc_createAction;
-			[_x, 0, ["ACE_MainActions"], _action1] call ace_interact_menu_fnc_addActionToObject;
-		};
-		if (_enableGetLROnObjects) then {
-			_action2 = ["tg_radiosLRAction", "Get LR", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {[_target, player] spawn TG_fnc_getLongRadio;}, {true}] call ace_interact_menu_fnc_createAction;
-			[_x, 0, ["ACE_MainActions"], _action2] call ace_interact_menu_fnc_addActionToObject;
-		};
-	} forEach _objectsForRadios;
-} else {
-	//if a player doesn't have TFAR running and they use this function they will get a regular radio and a notification.
-	{
-		_action2 = ["tg_radiosLRAction", "Get A Radio", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\radio_ca.paa", {player  addItem "itemRadio"; player assignItem "itemRadio"; player vehicleChat "Join us on TeamSpeak. ts.tacticalgamer.com:9988";}, {true}] call ace_interact_menu_fnc_createAction;
-		[_x, 0, ["ACE_MainActions"], _action2] call ace_interact_menu_fnc_addActionToObject;
-	} forEach _objectsForRadios;
-};
 	
 //hedghogs localized class based arsenal
-if (_useClassBasedArsenal) then {
+if !(_useClassBasedArsenal) then {
+	_objectsForClassBasedArsenal = [];
+} else {
 	{
 		[_x] call TG_fnc_ammo;
 	} forEach _objectsForClassBasedArsenal;
 };
 	
-//reprogram radio notifications when ACE arsenal is closed
-["ace_arsenal_displayClosed",{systemChat "Check your radio programming!!";}] call CBA_fnc_addEventHandler;
-["ace_arsenal_displayOpened",{systemChat "Welcome to the TG Arsenal.";}] call CBA_fnc_addEventHandler;
-//BIS arsenal reprogram long range radio notification
-[ missionNamespace, "arsenalClosed",{systemChat "Check your radio programming!!";}] call BIS_fnc_addScriptedEventHandler;
-
 //Teleport To Squad Leader
 if (_enableTeleportToSL) then {
 	[] spawn TG_fnc_teleportToSL;
@@ -298,7 +197,9 @@ if (_enableMapMarkers) then {
 };
 
 //FARP Actions
-if (_enableFarpAction) then {
+if !(_enableFarpAction) then {
+	_farpActionObjects = [];
+} else {
 	{
 	_action = _x addaction ["Repair All",{
 	params ["_target", "_caller", "_actionId", "_arguments"];

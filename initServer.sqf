@@ -5,16 +5,6 @@
 *********************************************************************************/
 
 
-//*CREATE ACE ARSENAL FROM fn_ACEarsenal.sqf	***********************************************
-//add all the objects you want to have ACE arsenals on them into the following array         **
-//                                                                                           **
-_enableACEarsenals = true;              //BOOLEAN
-                                                                                           //**
-//if _enableACEarsenals is FALSE then _boxesToLoad = [];                                     **
-_boxesToLoad = [ammoBox,supplyRepairTruck];   //edit this line
-/**********************************************************************************************/
-
-
 //PLACE MARKERS ON IMPORTANT VEHICLES OR OTHER ITEMS  ********************************************************
 //vehicles and their markers are placed in the editor and given the same name                               **
 //                                                                                                          **
@@ -39,6 +29,7 @@ _useCivPopulation = true;                         //BOOLEAN
 //https://www.tacticalgamer.com/forum/simulation/armed-assault/arma-contact-an-admin  **
 //                                                                                    **
 _useMissionTimer = true;
+timeInMinutesForMissionToEnd = 75; //default is 75 min
 /***************************************************************************************/
 
 //SET REFUEL VEHICLES THAT WILL BE REFILLABLE FROM THE FARP *************************************
@@ -77,10 +68,6 @@ _enableAmbientAirTraffic = true;                                          //    
 ["Initialize",[true]] call BIS_fnc_dynamicGroups;
 [] spawn TG_fnc_ifAllPlayersDead;
 
-//ACE Arsenals
-if (_enableACEarsenals) then {
-	{[_x] call TG_fnc_TgAceArsenal;} forEach _boxesToLoad;
-};
 
 //assetMarkers
 if (_useAssetMarkers) then {
@@ -97,25 +84,14 @@ if (_useMissionTimer) then {
 	[] spawn TG_fnc_missionTimer;
 };
 
-if (_enableRefillingRefuelVics) then {
+if !(_enableRefillingRefuelVics) then {
+	_refuelVicsAndCapacities = [];
+} else {	
 	{
 		(_x select 0) setVariable ["isAceRefuelVic", true, true];
 		(_x select 0) setVariable ["aceRefuelCapacity", (_x select 1), true];
 	} forEach _refuelVicsAndCapacities;
 };
-
-//DEFAULT TFR RADIOS
-//setting this ensures that regardless of initial respawn settings, players will get the right radio
-TF_defaultWestPersonalRadio = "tf_anprc152";
-TF_defaultWestRiflemanRadio = "tf_anprc152";
-TF_defaultGuerPersonalRadio = "tf_anprc148jem";
-TF_defaultGuerRiflemanRadio = "tf_anprc148jem";
-TF_defaultEastPersonalRadio = "tf_fadak";
-TF_defaultEastRiflemanRadio = "tf_fadak";
-TF_defaultWestBackpack = "tf_rt1523g_green";
-TF_defaultEastBackpack = "tf_mr3000_rhs";
-TF_defaultGuerBackpack = "tf_anprc155_coyote";
-
 
 //AMBIENT AIR TRAFFIC
 if (_enableAmbientAirTraffic) then {

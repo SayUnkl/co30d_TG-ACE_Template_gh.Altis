@@ -2,8 +2,9 @@
 //mission timer runs on server only 
 if !(isServer) exitWith {};
 
-_timeInMinutesForMissionToEnd = 75;
-_timeInSeconds = _timeInMinutesForMissionToEnd * 60;
+//timeInMinutesForMissionToEnd = 75; //now set in initServer.sqf
+
+_timeInSeconds = timeInMinutesForMissionToEnd * 60;
 _thirtyMinuteWarningMssg = "There is 30 minutes left to complete the mission.";
 _tenMinuteWarningMssg = "There is only ten minutes to complete the mission.";
 _fiveMinuteWarningMssg = "There is only five minutes to complete the mission.";
