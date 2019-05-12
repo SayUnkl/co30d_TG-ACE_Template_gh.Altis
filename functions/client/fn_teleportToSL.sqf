@@ -2,6 +2,8 @@
 //first converted to run via []execVM by Unkl for TacticalGamer.com then...
 //Teleport To SL Script converted to function by hedgehog and many UI improvements
 
+waitUntil {!(isNil {player getVariable "sideOfThisPlayer"}) and side player == player getVariable "sideOfThisPlayer"};
+
 hint "JIP! SCROLL WHEEL and hold SPACE to teleport to your group leader! Press U for group management. 5 min limit.";
 cutText ["","BLACK OUT"];
 cutText ["JIP! SCROLL WHEEL and hold SPACE to teleport to your group leader! Press U for group management. 5 min limit.","PLAIN",2];
